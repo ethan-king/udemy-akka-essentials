@@ -9,7 +9,6 @@ import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
   * Daniel for Rock the JVM
   */
 object Playground extends App {
-
   val system = ActorSystem("Playground")
 
   val playgroundActor = system.actorOf(Props[MyPlaygroundActor], "playgroundActor")
