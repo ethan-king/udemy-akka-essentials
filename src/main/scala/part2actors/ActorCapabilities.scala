@@ -117,7 +117,7 @@ object ActorCapabilities extends App {
       case LiveTheLife(account) =>
         account ! Deposit(10000)
         account ! Withdraw(50000)
-        account ! Withdraw(500)
+        account ! Withdraw(700)
         account ! Statement
       case message => println(message.toString)
     }
