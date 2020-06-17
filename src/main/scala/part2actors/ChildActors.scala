@@ -14,8 +14,8 @@ object ChildActors extends App {
     override def receive: Receive = {
       case CreateChild(name) =>
         println(s"${self.path} creating child")
-        val childRef = context.actorOf(Props[Child], name)
-        context.become(withChild(childRef))
+        val childRef = context.actorOf(Props[Child], name) // create child then
+        context.become(withChild(childRef)) // change Receive handler to withChild
 
     }
     def withChild(childRef: ActorRef): Receive = {
@@ -38,12 +38,16 @@ object ChildActors extends App {
   parent ! TellChild("do your chores")
 
   // actor hierarhchies
+  // parent -> child -> grandchild
+  //        -> child2
 
-  //Guardian actors - system
+  //
+
   /*
-  - /system
-  - /user
-  - /
+  Guardian actors - system - top-level actors
+  - /system : system guardian
+  - /user : anything created by user
+  - / : root guardian
    */
 
   /**
